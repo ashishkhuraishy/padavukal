@@ -1,0 +1,16 @@
+[
+    {
+        "id": 1,
+        "name": "Plus One",
+        "duration": 0,
+        "price": 0.0,
+        "premium": true
+    },
+    {
+        "id": 2,
+        "name": "Plus Two",
+        "duration": 0,
+        "price": 0.0,
+        "premium": true
+    }
+]
