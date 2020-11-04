@@ -9,7 +9,7 @@ part of 'error.dart';
 Errors _$ErrorsFromJson(Map<String, dynamic> json) {
   return Errors(
     message: json['message'] as String,
-    statusCode: json['status'] as int,
+    statusCode: json['status'] as String,
     error: json['error'] as String,
     stackTrace: json['stackTrace'] as String,
   );

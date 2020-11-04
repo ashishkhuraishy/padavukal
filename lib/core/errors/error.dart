@@ -8,7 +8,7 @@ part 'error.g.dart';
 class Errors {
   final String message;
   @JsonKey(name: 'status')
-  final int statusCode;
+  final String statusCode;
   final String error;
   final String stackTrace;
 
@@ -23,8 +23,8 @@ class Errors {
 
   factory Errors.newUnknownApiError({Response response, String stackTrace}) {
     return Errors(
-      message: response.statusMessage,
-      statusCode: response.statusCode,
+      message: response.statusMessage ?? '',
+      statusCode: response.statusCode.toString(),
       error: 'unknown_api_error',
       stackTrace: stackTrace,
     );
@@ -32,8 +32,8 @@ class Errors {
 
   factory Errors.newApiError({Response response, String stackTrace}) {
     return Errors(
-      message: response.statusMessage,
-      statusCode: response.statusCode,
+      message: response.statusMessage ?? '',
+      statusCode: response.statusCode.toString(),
       error: 'unknown_api_error',
       stackTrace: stackTrace,
     );

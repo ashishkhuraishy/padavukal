@@ -1,25 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:get/get.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 
-class UserController extends GetxController {
+class AuthProvider extends ChangeNotifier {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  Rx<User> _firebaseUser = Rx<User>();
-  RxBool _isNewUser = false.obs;
 
   Logger _logger = Logger();
 
-  User get user => _firebaseUser.value;
+  User get user => _auth.currentUser;
   Future<String> get token async => user.getIdToken();
 
-  @override
-  void onInit() {
-    // _firebaseUser.value = _auth.currentUser;
-    _firebaseUser.bindStream(_auth.authStateChanges());
-    super.onInit();
-  }
+  Stream<User> get userAuthState => _auth.authStateChanges();
 
   signInWIthGoogle() async {
     GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -33,12 +26,14 @@ class UserController extends GetxController {
 
     var creds = await _auth.signInWithCredential(googleAuthCredential);
     if (creds.additionalUserInfo.isNewUser) {
-      _isNewUser.value = true;
+      //Do something if its a new user
     }
+    notifyListeners();
   }
 
   logout() {
     _logger.w("Sign out is being called");
     _auth.signOut();
+    notifyListeners();
   }
 }

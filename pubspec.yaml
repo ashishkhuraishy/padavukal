@@ -36,7 +36,8 @@ dependencies:
   #json serialiser
   json_annotation:  
   # state management
-  get: 
+  provider:
+  equatable:
   #logging
   logger:
     # Functional programming thingies
