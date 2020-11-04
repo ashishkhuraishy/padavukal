@@ -2,7 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
 import 'package:padavukal/core/providers/auth_provider.dart';
-import 'package:padavukal/screens/auth_screen.dart';
+import 'package:padavukal/screens/auth/auth_screen.dart';
 import 'package:padavukal/screens/home.dart';
 import 'package:provider/provider.dart';
 

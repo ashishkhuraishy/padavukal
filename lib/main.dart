@@ -4,10 +4,12 @@ import 'package:padavukal/core/providers/auth_provider.dart';
 import 'package:padavukal/wrapper.dart';
 import 'package:provider/provider.dart';
 
+import 'injection_container.dart' as container;
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-
+  await container.init();
   runApp(MyApp());
 }
 

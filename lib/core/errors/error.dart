@@ -1,5 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:http/http.dart';
 import 'package:json_annotation/json_annotation.dart';
 
 part 'error.g.dart';
@@ -23,7 +23,7 @@ class Errors {
 
   factory Errors.newUnknownApiError({Response response, String stackTrace}) {
     return Errors(
-      message: response.statusMessage ?? '',
+      message: response.reasonPhrase ?? '',
       statusCode: response.statusCode.toString(),
       error: 'unknown_api_error',
       stackTrace: stackTrace,
@@ -32,7 +32,7 @@ class Errors {
 
   factory Errors.newApiError({Response response, String stackTrace}) {
     return Errors(
-      message: response.statusMessage ?? '',
+      message: response.reasonPhrase ?? '',
       statusCode: response.statusCode.toString(),
       error: 'unknown_api_error',
       stackTrace: stackTrace,

@@ -45,7 +45,7 @@ dependencies:
   # Service locator
   get_it: ^4.0.4
   data_connection_checker: ^0.3.4
-  dio:
+  http:
 
 
 dev_dependencies:

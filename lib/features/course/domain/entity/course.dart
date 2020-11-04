@@ -16,6 +16,8 @@ class Course {
   final int duration;
   final double price;
   final bool isPremium;
+  final bool isSubscribed;
+  final bool isExpired;
 
   Course({
     @required this.id,
@@ -23,5 +25,7 @@ class Course {
     @required this.duration,
     @required this.price,
     @required this.isPremium,
+    @required this.isExpired,
+    @required this.isSubscribed,
   });
 }

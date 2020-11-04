@@ -13,6 +13,8 @@ CourseModel _$CourseModelFromJson(Map<String, dynamic> json) {
     duration: json['duration'] as int,
     price: (json['price'] as num).toDouble(),
     isPremium: json['premium'] as bool,
+    isExpired: json['expiry'] as bool,
+    isSubscribed: json['subscription'] as bool,
   );
 }
 
@@ -23,4 +25,6 @@ Map<String, dynamic> _$CourseModelToJson(CourseModel instance) =>
       'duration': instance.duration,
       'price': instance.price,
       'premium': instance.isPremium,
+      'subscription': instance.isSubscribed,
+      'expiry': instance.isExpired,
     };
