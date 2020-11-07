@@ -6,18 +6,18 @@ import 'package:flutter/cupertino.dart';
 
 import '../../../../../core/errors/error.dart';
 import '../../../domain/entity/course.dart';
+import '../../../domain/entity/sucess_message.dart';
 import '../../../domain/repositories/course_repo.dart';
-import '../../subjects/bloc/subject_bloc.dart';
 
 part 'course_event.dart';
 part 'course_state.dart';
 
 class CourseBloc extends Bloc<CourseEvent, CourseState> {
   final CourseRepo courseRepo;
-  final SubjectBloc subjectBloc;
+  // final SubjectBloc subjectBloc;
 
   CourseBloc({
-    @required this.subjectBloc,
+    // @required this.subjectBloc,
     @required this.courseRepo,
   }) : super(CourseInitial());
 
@@ -25,25 +25,26 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
   Stream<CourseState> mapEventToState(
     CourseEvent event,
   ) async* {
-    if (event is CourseInitial) {
+    if (event is InitialEvent) {
       yield LoadingState();
 
       final res = await courseRepo.getAllCourses();
 
-      yield* res.fold(
-        (err) async* {
-          yield ErrorState(err: err);
-        },
-        (courses) async* {
-          yield CourseLoaded(courses: courses);
-        },
+      yield res.fold(
+        (err) => CourseErrorState(err: err),
+        (courses) => CourseLoaded(courses: courses),
       );
     } else if (event is SelectCourseEvent) {
       if (event.course.isSubscribed) {
-        // TODO : implement course subscribe logic
+        // TODO: implement course renew logic
 
       } else {
-        // TODO: implement course renew logic
+        yield LoadingState();
+        final res = await courseRepo.subscribeCourse(event.course.id);
+        yield res.fold(
+          (err) => CourseErrorState(err: err),
+          (sucess) => SucessState(sucessMessage: sucess),
+        );
       }
     }
   }

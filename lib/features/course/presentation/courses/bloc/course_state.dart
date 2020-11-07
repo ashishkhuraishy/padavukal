@@ -11,10 +11,10 @@ class CourseInitial extends CourseState {}
 
 class LoadingState extends CourseState {}
 
-class ErrorState extends CourseState {
+class CourseErrorState extends CourseState {
   final Errors err;
 
-  ErrorState({this.err});
+  CourseErrorState({@required this.err,});
 }
 
 class CourseLoaded extends CourseState {
@@ -22,5 +22,13 @@ class CourseLoaded extends CourseState {
 
   CourseLoaded({
     @required this.courses,
+  });
+}
+
+class SucessState extends CourseState {
+  final SucessMessage sucessMessage;
+
+  SucessState({
+    @required this.sucessMessage,
   });
 }

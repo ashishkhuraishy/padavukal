@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:padavukal/features/course/presentation/courses/screens/view_all_courses.dart';
 
 class ViewCoursesPage extends StatelessWidget {
   @override
@@ -13,7 +14,10 @@ class ViewCoursesPage extends StatelessWidget {
         children: [
           Text("You dont have any default courses selected"),
           RaisedButton.icon(
-            onPressed: () => print("View Courses Clicked"),
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => ViewAllCourses()),
+            ),
             icon: Icon(Icons.book),
             label: Text("View Courses"),
           ),

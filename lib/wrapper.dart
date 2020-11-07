@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:padavukal/features/auth/bloc/auth_bloc.dart';
-import 'package:padavukal/features/course/presentation/subjects/screens/home_wrapper.dart';
-import 'package:padavukal/screens/auth/auth_screen.dart';
-import 'package:padavukal/widgets/loading.dart';
+
+import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/course/presentation/subjects/screens/home_wrapper.dart';
+import 'features/auth/presentation/screens/auth_screen.dart';
+import 'widgets/loading.dart';
 
 class Wrapper extends StatelessWidget {
   final Logger _log = Logger();

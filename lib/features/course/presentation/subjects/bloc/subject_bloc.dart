@@ -30,7 +30,7 @@ class SubjectBloc extends Bloc<SubjectEvent, SubjectState> {
           if (err.statusCode == NO_DEFAULT_COURSE_STATUS_CODE) {
             yield SelectCourseState();
           } else {
-            yield ErrorState(err: err);
+            yield ErrorSubjectState(err: err);
           }
         },
         (subjects) async* {

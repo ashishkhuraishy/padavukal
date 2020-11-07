@@ -15,22 +15,23 @@ import '../../fixtures/fixture.dart';
 
 class MockHttp extends Mock implements Client {}
 
-class MockUser extends Mock implements User {}
+class MockAuth extends Mock implements FirebaseAuth {}
 
 main() {
   MockHttp client = MockHttp();
-  MockUser mockUser = MockUser();
+  MockAuth mockUser = MockAuth();
   Logger logger = Logger();
   ApiConfig apiConfig = ApiConfig(
     client: client,
     logger: logger,
-    user: mockUser,
+    auth: mockUser,
   );
 
   final mockToken = "1234556";
 
   setUp(() {
-    when(mockUser.getIdToken()).thenAnswer((realInvocation) async => mockToken);
+    when(mockUser.currentUser.getIdToken())
+        .thenAnswer((realInvocation) async => mockToken);
   });
 
   test('should return a valid [CourseModel] if using [CourseModel] as [T]',
@@ -60,7 +61,7 @@ main() {
         HttpHeaders.authorizationHeader: mockToken,
       },
     ));
-    verify(mockUser.getIdToken());
+    verify(mockUser.currentUser.getIdToken());
     expect(res, isA<Right>());
     expect(_err, isNull);
     expect(_courseModel, isNotNull);
@@ -89,7 +90,7 @@ main() {
         HttpHeaders.authorizationHeader: mockToken,
       },
     ));
-    verify(mockUser.getIdToken());
+    verify(mockUser.currentUser.getIdToken());
     expect(res, isA<Right>());
     expect(_err, isNull);
     expect(_courseModels, isNotNull);

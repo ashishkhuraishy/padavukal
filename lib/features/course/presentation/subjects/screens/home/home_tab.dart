@@ -24,7 +24,7 @@ class _HomeTabState extends State<HomeTab> {
       ),
       body: PageView(
         children: [
-          HomePage(subjects: null),
+          HomePage(subjects: widget.subjects),
           ViewCoursesPage(),
           ViewCoursesPage(),
         ],
@@ -33,12 +33,15 @@ class _HomeTabState extends State<HomeTab> {
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.book),
+            label: 'Test',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
+            label: 'Account',
           ),
         ],
         backgroundColor: Colors.blue[700],

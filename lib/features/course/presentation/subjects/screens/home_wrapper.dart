@@ -24,7 +24,7 @@ class HomeWrapper extends StatelessWidget {
               );
             } else if (state is SelectCourseState) {
               return ViewCoursesPage();
-            } else if (state is ErrorState) {
+            } else if (state is ErrorSubjectState) {
               return ErrorsWidget(
                 errors: state.err,
                 retryFn: () =>

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/auth/bloc/auth_bloc.dart';
+import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
 
 class AuthScreen extends StatelessWidget {
   @override
