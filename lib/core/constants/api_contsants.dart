@@ -10,3 +10,5 @@ class ApiEndpoints {
   static String subscribe = BASE_URL + "/api/subscription/subscribe";
   static String updateDefaultCourse = BASE_URL + "/api/profile/default";
 }
+
+const String NO_DEFAULT_COURSE_STATUS_CODE = "426";

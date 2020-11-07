@@ -22,9 +22,21 @@ Future<void> init() async {
     ),
   );
 
+  sl.registerLazySingleton<SubjectRepo>(
+    () => SubjectRepoImpl(
+      subjectRemote: sl(),
+    ),
+  );
+
   sl.registerLazySingleton<CoursesRemote>(
     () => CourseRemoteImpl(
       config: sl(),
+    ),
+  );
+
+  sl.registerLazySingleton<SubjectRemote>(
+    () => SubjectRemoteImpl(
+      apiConfig: sl(),
     ),
   );
 

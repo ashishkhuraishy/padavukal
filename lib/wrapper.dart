@@ -11,20 +11,6 @@ class Wrapper extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return StreamBuilder(
-    //   stream: BlocProvider.of<AuthBloc>(context).authState,
-    //   builder: (BuildContext context, AsyncSnapshot<User> snapshot) {
-    //     if (snapshot.data != null) {
-    //       _log.i("Loggin in as ${snapshot.data.displayName}");
-    //       return Home(
-    //         user: snapshot.data,
-    //       );
-    //     }
-    //     _log.i("Signed Out");
-    //     return AuthScreen();
-    //   },
-    // );
-
     return BlocBuilder<AuthBloc, AuthState>(
       builder: (context, state) {
         _log.i(state);

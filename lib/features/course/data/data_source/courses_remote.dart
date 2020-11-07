@@ -8,6 +8,8 @@ import 'package:padavukal/features/course/domain/entity/course.dart';
 abstract class CoursesRemote {
   Future<Either<Errors, List<Course>>> getAllCourse();
   Future<Either<Errors, Course>> getCourseById(int id);
+  Future<Either<Errors, Course>> subscribeCourse(int id);
+  Future<Either<Errors, Course>> setAsFDefaultCourse(int id);
 }
 
 class CourseRemoteImpl extends CoursesRemote {
@@ -27,6 +29,22 @@ class CourseRemoteImpl extends CoursesRemote {
   Future<Either<Errors, Course>> getCourseById(int id) async {
     return await config.get<CourseModel>(
       endpoint: ApiEndpoints.courses + '$id',
+      instance: CourseModel(),
+    );
+  }
+
+  @override
+  Future<Either<Errors, Course>> setAsFDefaultCourse(int id) async {
+    return await config.get<CourseModel>(
+      endpoint: ApiEndpoints.updateDefaultCourse + '$id',
+      instance: CourseModel(),
+    );
+  }
+
+  @override
+  Future<Either<Errors, Course>> subscribeCourse(int id) async {
+    return await config.get<CourseModel>(
+      endpoint: ApiEndpoints.subscribe + '$id',
       instance: CourseModel(),
     );
   }

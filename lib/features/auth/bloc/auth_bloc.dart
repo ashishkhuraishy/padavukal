@@ -19,7 +19,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({
     @required this.authRepo,
   }) : super(AuthInitial()) {
-    _log.d("Initialised");
+    _log.d("Initialised Auth Stream");
     _userStream = authRepo.authState.listen((user) => _mapUserToEvent(user));
   }
 

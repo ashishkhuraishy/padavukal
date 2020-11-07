@@ -4,7 +4,10 @@ import 'package:padavukal/core/errors/error.dart';
 class ErrorsWidget extends StatelessWidget {
   final Errors errors;
 
-  const ErrorsWidget({Key key, this.errors}) : super(key: key);
+  const ErrorsWidget({
+    Key key,
+    @required this.errors,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
