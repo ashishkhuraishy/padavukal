@@ -36,6 +36,7 @@ dependencies:
   #json serialiser
   json_annotation:  
   # state management
+  flutter_bloc:
   provider:
   equatable:
   #logging

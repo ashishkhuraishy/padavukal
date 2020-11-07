@@ -1,16 +1,14 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
 
-class AuthProvider extends ChangeNotifier {
+class AuthProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Logger _logger = Logger();
 
-  User get user => _auth.currentUser;
-  Future<String> get token async => user.getIdToken();
+  Future<User> get user async => _auth.currentUser;
 
   Stream<User> get userAuthState => _auth.authStateChanges();
 
@@ -28,12 +26,10 @@ class AuthProvider extends ChangeNotifier {
     if (creds.additionalUserInfo.isNewUser) {
       //Do something if its a new user
     }
-    notifyListeners();
   }
 
-  logout() {
+  logout() async {
     _logger.w("Sign out is being called");
-    _auth.signOut();
-    notifyListeners();
+    await _auth.signOut();
   }
 }

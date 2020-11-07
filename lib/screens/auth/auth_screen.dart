@@ -1,18 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/core/providers/auth_provider.dart';
-import 'package:provider/provider.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:padavukal/features/auth/bloc/auth_bloc.dart';
 
 class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _authProvider = Provider.of<AuthProvider>(context);
-
     return Scaffold(
       body: Center(
         child: RaisedButton.icon(
-          onPressed: () async {
-            await _authProvider.signInWIthGoogle();
-          },
+          onPressed: () => BlocProvider.of<AuthBloc>(context).add(LogInEvent()),
           icon: Icon(Icons.login),
           label: Text("login"),
         ),
