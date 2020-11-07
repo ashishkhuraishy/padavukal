@@ -22,8 +22,8 @@ class SucessSubjectsState extends SubjectState {
 
 class SelectCourseState extends SubjectState {}
 
-class ErrorState extends SubjectState {
+class ErrorSubjectState extends SubjectState {
   final Errors err;
 
-  ErrorState({this.err});
+  ErrorSubjectState({this.err});
 }

@@ -2,6 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:padavukal/core/errors/error.dart';
 import 'package:padavukal/features/course/data/data_source/courses_remote.dart';
 import 'package:padavukal/features/course/domain/entity/course.dart';
+import 'package:padavukal/features/course/domain/entity/sucess_message.dart';
 import 'package:padavukal/features/course/domain/repositories/course_repo.dart';
 
 class CourseRepoImpl extends CourseRepo {
@@ -20,14 +21,12 @@ class CourseRepoImpl extends CourseRepo {
   }
 
   @override
-  Future<Either<Errors, Course>> setAsDefaultCourse(int id) {
-    // TODO: implement setAsDefaultCourse
-    throw UnimplementedError();
+  Future<Either<Errors, SucessMessage>> setAsDefaultCourse(int id) async {
+    return await coursesRemote.setAsFDefaultCourse(id);
   }
 
   @override
-  Future<Either<Errors, Course>> subscribeCourse(int id) {
-    // TODO: implement subscribeCourse
-    throw UnimplementedError();
+  Future<Either<Errors, SucessMessage>> subscribeCourse(int id) async {
+    return await coursesRemote.subscribeCourse(id);
   }
 }

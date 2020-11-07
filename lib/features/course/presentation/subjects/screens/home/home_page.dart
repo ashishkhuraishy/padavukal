@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/auth/bloc/auth_bloc.dart';
+import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:padavukal/features/course/domain/entity/subject.dart';
 
 class HomePage extends StatelessWidget {
@@ -22,6 +22,7 @@ class HomePage extends StatelessWidget {
             "Welcome ${user.displayName}",
           ),
           ListView.builder(
+            shrinkWrap: true,
             itemCount: subjects.length,
             itemBuilder: (context, index) {
               final subj = subjects[index];
