@@ -11,21 +11,23 @@ import 'package:padavukal/core/errors/error.dart';
 
 class ApiConfig {
   final Client client;
-  final User user;
+  final FirebaseAuth auth;
   final Logger logger;
 
   ApiConfig({
     @required this.client,
-    @required this.user,
+    @required this.auth,
     @required this.logger,
   });
+
+  Future<String> get _token async => auth.currentUser.getIdToken();
 
   Future<Either<Errors, T>> get<T extends JsonModel<T>>(
       {T instance, String endpoint}) async {
     Response response;
 
     try {
-      String token = await user.getIdToken();
+      String token = await _token;
       response = await client.get(endpoint, headers: {
         HttpHeaders.authorizationHeader: token,
       });
@@ -45,7 +47,7 @@ class ApiConfig {
       {T instance, String endpoint}) async {
     Response response;
     try {
-      String token = await user.getIdToken();
+      String token = await _token;
       response = await client.get(
         endpoint,
         headers: {

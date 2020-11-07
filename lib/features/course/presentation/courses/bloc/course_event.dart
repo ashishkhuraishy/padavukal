@@ -9,6 +9,13 @@ abstract class CourseEvent extends Equatable {
 
 class InitialEvent extends CourseEvent {}
 
-class SelectCourseEvent extends CourseEvent {}
+class SelectCourseEvent extends CourseEvent {
+  final Course course;
 
-class HomePageEvent extends CourseEvent {}
+  SelectCourseEvent({
+    @required this.course,
+  });
+
+  @override
+  List<Object> get props => [course];
+}

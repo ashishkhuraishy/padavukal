@@ -22,24 +22,11 @@ Future<void> init() async {
     ),
   );
 
-  sl.registerLazySingleton<SubjectRepo>(
-    () => SubjectRepoImpl(
-      subjectRemote: sl(),
-    ),
-  );
-
   sl.registerLazySingleton<CoursesRemote>(
     () => CourseRemoteImpl(
       config: sl(),
     ),
   );
-
-  sl.registerLazySingleton<SubjectRemote>(
-    () => SubjectRemoteImpl(
-      apiConfig: sl(),
-    ),
-  );
-
   sl.registerLazySingleton<SubjectRepo>(
     () => SubjectRepoImpl(
       subjectRemote: sl(),
@@ -55,7 +42,7 @@ Future<void> init() async {
   sl.registerLazySingleton(
     () => ApiConfig(
       client: sl<Client>(),
-      user: sl<User>(),
+      auth: sl<FirebaseAuth>(),
       logger: sl<Logger>(),
     ),
   );

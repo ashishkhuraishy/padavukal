@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:padavukal/features/course/domain/entity/subject.dart';
+import 'package:padavukal/features/course/presentation/subjects/screens/home/home_page.dart';
 import 'package:padavukal/features/course/presentation/subjects/screens/view_courses_page.dart';
 
 class HomeTab extends StatefulWidget {
+  final List<Subject> subjects;
+
+  const HomeTab({
+    Key key,
+    @required this.subjects,
+  }) : super(key: key);
+
   @override
   _HomeTabState createState() => _HomeTabState();
 }
@@ -15,7 +24,7 @@ class _HomeTabState extends State<HomeTab> {
       ),
       body: PageView(
         children: [
-          ViewCoursesPage(),
+          HomePage(subjects: null),
           ViewCoursesPage(),
           ViewCoursesPage(),
         ],
