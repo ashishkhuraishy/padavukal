@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/auth/bloc/auth_bloc.dart';
+
+import '../features/auth/presentation/bloc/auth_bloc.dart';
 
 class OutLinedButton extends StatelessWidget {
   final String title;
