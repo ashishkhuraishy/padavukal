@@ -22,17 +22,22 @@ class AuthRepoImpl extends AuthRepo {
 
   @override
   Future<User> signInWithGoogle() async {
-    GoogleSignInAccount _googleUser = await googleSignIn.signIn();
-    GoogleSignInAuthentication _auth = await _googleUser.authentication;
+    try {
+      GoogleSignInAccount _googleUser = await googleSignIn.signIn();
+      GoogleSignInAuthentication _auth = await _googleUser.authentication;
 
-    GoogleAuthCredential _credential = GoogleAuthProvider.credential(
-      accessToken: _auth.accessToken,
-      idToken: _auth.idToken,
-    );
+      GoogleAuthCredential _credential = GoogleAuthProvider.credential(
+        accessToken: _auth.accessToken,
+        idToken: _auth.idToken,
+      );
 
-    var res = await firebaseAuth.signInWithCredential(_credential);
-    _log.d(res.user);
-    return res.user;
+      var res = await firebaseAuth.signInWithCredential(_credential);
+      _log.d(res.user);
+      return res.user;
+    } catch (e) {
+      _log.e(e.toString());
+      return null;
+    }
   }
 
   @override

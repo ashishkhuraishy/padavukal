@@ -23,3 +23,9 @@ class SucessSubjectsEvent extends SubjectEvent {
 class ErrorSubjectsEvent extends SubjectEvent {}
 
 class NotFoundSubjectsEvent extends SubjectEvent {}
+
+class GetChaptersEvent extends SubjectEvent {
+  final int id;
+
+  GetChaptersEvent({this.id});
+}

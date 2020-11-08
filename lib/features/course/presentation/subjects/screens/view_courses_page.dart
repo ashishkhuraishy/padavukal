@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:padavukal/features/course/presentation/courses/screens/view_all_courses.dart';
+import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
 
 class ViewCoursesPage extends StatelessWidget {
+  const ViewCoursesPage({
+    Key key,
+  }) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +22,11 @@ class ViewCoursesPage extends StatelessWidget {
           RaisedButton.icon(
             onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (_) => ViewAllCourses()),
+              MaterialPageRoute(
+                builder: (context) => ViewAllCourses(
+                  subjectBloc: BlocProvider.of<SubjectBloc>(context),
+                ),
+              ),
             ),
             icon: Icon(Icons.book),
             label: Text("View Courses"),

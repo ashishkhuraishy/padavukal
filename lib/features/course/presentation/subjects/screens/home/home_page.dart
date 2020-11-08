@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
 import 'package:padavukal/features/course/domain/entity/subject.dart';
+import 'package:padavukal/features/course/presentation/chapters/screens/list_chapters.dart';
 
 class HomePage extends StatelessWidget {
   final List<Subject> subjects;
@@ -28,7 +29,12 @@ class HomePage extends StatelessWidget {
               final subj = subjects[index];
               return ListTile(
                 title: Text(subj.name),
-                onTap: () => print(subj.id),
+                onTap: () => Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ChaptersPage(subject: subj),
+                  ),
+                ),
               );
             },
           ),

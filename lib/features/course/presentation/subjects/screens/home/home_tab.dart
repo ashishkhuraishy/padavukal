@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/features/course/domain/entity/subject.dart';
-import 'package:padavukal/features/course/presentation/subjects/screens/home/home_page.dart';
-import 'package:padavukal/features/course/presentation/subjects/screens/view_courses_page.dart';
+
+import '../../../../domain/entity/subject.dart';
+import '../view_courses_page.dart';
+import 'accounts_page.dart';
+import 'home_page.dart';
 
 class HomeTab extends StatefulWidget {
   final List<Subject> subjects;
@@ -16,6 +18,18 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
+  int indx = 0;
+  PageController _pageController;
+
+  @override
+  void initState() {
+    _pageController = PageController(
+      initialPage: indx,
+      keepPage: true,
+    );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -23,13 +37,24 @@ class _HomeTabState extends State<HomeTab> {
         title: Text('Padavukal'),
       ),
       body: PageView(
+        controller: _pageController,
+        onPageChanged: (value) => setState(() => indx = value),
         children: [
           HomePage(subjects: widget.subjects),
           ViewCoursesPage(),
-          ViewCoursesPage(),
+          AccountPage(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
+        onTap: (value) {
+          _pageController.animateToPage(
+            value,
+            duration: Duration(milliseconds: 500),
+            curve: Curves.easeIn,
+          );
+          setState(() => indx = value);
+        },
+        currentIndex: indx,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),

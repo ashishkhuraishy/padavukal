@@ -20,6 +20,15 @@ class SucessSubjectsState extends SubjectState {
   List<Object> get props => [subjects];
 }
 
+class ChaptersState extends SubjectState {
+  final List<Chapter> chapters;
+
+  ChaptersState({this.chapters});
+
+  @override
+  List<Object> get props => [chapters];
+}
+
 class SelectCourseState extends SubjectState {}
 
 class ErrorSubjectState extends SubjectState {

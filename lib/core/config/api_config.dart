@@ -73,6 +73,7 @@ class ApiConfig {
     T instance,
   }) async {
     Response response;
+    logger.i(jsonEncode(data));
     try {
       String token = await _token;
       response = await client.post(
@@ -88,7 +89,7 @@ class ApiConfig {
       var res = _convertedData<T>(jsonDecode(response.body), instance);
       return Right(res);
     } catch (e) {
-      var err = _convertToError(response, e);
+      var err = _convertToError(response, e.toString());
       return Left(err);
     }
   }

@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
+import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
 import 'package:padavukal/wrapper.dart';
 
 import 'injection_container.dart' as container;
@@ -20,6 +21,9 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider<AuthBloc>(
           create: (_) => AuthBloc(authRepo: container.sl()),
+        ),
+        BlocProvider<SubjectBloc>(
+          create: (context) => SubjectBloc(subjectRepo: container.sl()),
         ),
       ],
       child: MaterialApp(
