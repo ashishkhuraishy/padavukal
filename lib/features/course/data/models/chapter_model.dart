@@ -9,9 +9,12 @@ class ChapterModel extends Chapter implements JsonModel<ChapterModel> {
   final int id;
   @JsonKey(name: 'subject')
   final int subjectId;
+  @JsonKey(name: 'thumbnail', nullable: true, defaultValue: '')
+  final String thumbnail;
   final String name;
 
   ChapterModel({
+    this.thumbnail,
     this.id,
     this.subjectId,
     this.name,
@@ -19,6 +22,7 @@ class ChapterModel extends Chapter implements JsonModel<ChapterModel> {
           id: id,
           name: name,
           subjectId: subjectId,
+          thumbnail: thumbnail,
         );
 
   @override

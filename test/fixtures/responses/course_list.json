@@ -1,16 +1,29 @@
 [
     {
         "id": 1,
+        "subscription": false,
+        "expiry": false,
         "name": "Plus One",
-        "duration": 0,
+        "duration": 365,
         "price": 0.0,
+        "premium": false
+    },
+    {
+        "id": 3,
+        "subscription": false,
+        "expiry": false,
+        "name": "Plus Two",
+        "duration": 365,
+        "price": 500.0,
         "premium": true
     },
     {
-        "id": 2,
+        "id": 4,
+        "subscription": false,
+        "expiry": false,
         "name": "Plus Two",
-        "duration": 0,
-        "price": 0.0,
+        "duration": 365,
+        "price": 500.0,
         "premium": true
     }
 ]

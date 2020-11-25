@@ -12,6 +12,10 @@ class CourseModel extends Course implements JsonModel<CourseModel> {
   final double price;
   @JsonKey(name: 'premium')
   final bool isPremium;
+  @JsonKey(name: 'subscription')
+  final bool isSubscribed;
+  @JsonKey(name: 'expiry')
+  final bool isExpired;
 
   CourseModel({
     this.id,
@@ -19,12 +23,16 @@ class CourseModel extends Course implements JsonModel<CourseModel> {
     this.duration,
     this.price,
     this.isPremium,
+    this.isExpired,
+    this.isSubscribed,
   }) : super(
           duration: duration,
           id: id,
           isPremium: isPremium,
           name: name,
           price: price,
+          isExpired: isExpired,
+          isSubscribed: isSubscribed,
         );
 
   @override

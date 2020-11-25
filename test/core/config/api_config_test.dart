@@ -1,7 +1,9 @@
+import 'dart:io';
+
 import 'package:dartz/dartz.dart';
-import 'package:dio/dio.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:http/http.dart';
 import 'package:logger/logger.dart';
 import 'package:mockito/mockito.dart';
 import 'package:padavukal/core/config/api_config.dart';
@@ -11,24 +13,25 @@ import 'package:padavukal/features/course/data/models/course_model.dart';
 
 import '../../fixtures/fixture.dart';
 
-class MockDio extends Mock implements Dio {}
+class MockHttp extends Mock implements Client {}
 
-class MockUser extends Mock implements User {}
+class MockAuth extends Mock implements FirebaseAuth {}
 
 main() {
-  MockDio client = MockDio();
-  MockUser mockUser = MockUser();
+  MockHttp client = MockHttp();
+  MockAuth mockUser = MockAuth();
   Logger logger = Logger();
   ApiConfig apiConfig = ApiConfig(
     client: client,
     logger: logger,
-    user: mockUser,
+    auth: mockUser,
   );
 
   final mockToken = "1234556";
 
   setUp(() {
-    when(mockUser.getIdToken()).thenAnswer((realInvocation) async => mockToken);
+    when(mockUser.currentUser.getIdToken())
+        .thenAnswer((realInvocation) async => mockToken);
   });
 
   test('should return a valid [CourseModel] if using [CourseModel] as [T]',
@@ -37,11 +40,11 @@ main() {
     CourseModel _courseModel;
 
     when(
-      client.get(any, options: anyNamed('options')),
+      client.get(any, headers: anyNamed('headers')),
     ).thenAnswer(
       (realInvocation) async => Response(
-        statusCode: 200,
-        data: fixture('course.json'),
+        fixture('course.json'),
+        200,
       ),
     );
 
@@ -54,9 +57,11 @@ main() {
 
     verify(client.get(
       ApiEndpoints.courses,
-      options: anyNamed("options"),
+      headers: {
+        HttpHeaders.authorizationHeader: mockToken,
+      },
     ));
-    verify(mockUser.getIdToken());
+    verify(mockUser.currentUser.getIdToken());
     expect(res, isA<Right>());
     expect(_err, isNull);
     expect(_courseModel, isNotNull);
@@ -67,11 +72,11 @@ main() {
       () async {
     Errors _err;
     List<CourseModel> _courseModels;
-    when(client.get(any, options: anyNamed("options"))).thenAnswer(
+    when(client.get(any, headers: anyNamed("headers"))).thenAnswer(
       (realInvocation) async => Response(
-          statusCode: 200,
-          data: fixture('course_list.json'),
-          statusMessage: "Sucess"),
+        fixture('course_list.json'),
+        200,
+      ),
     );
 
     var res = await apiConfig.getList<CourseModel>(
@@ -81,9 +86,11 @@ main() {
     res.fold((l) => _err = l, (r) => _courseModels = r);
     verify(client.get(
       ApiEndpoints.courses,
-      options: anyNamed('options'),
+      headers: {
+        HttpHeaders.authorizationHeader: mockToken,
+      },
     ));
-    verify(mockUser.getIdToken());
+    verify(mockUser.currentUser.getIdToken());
     expect(res, isA<Right>());
     expect(_err, isNull);
     expect(_courseModels, isNotNull);
