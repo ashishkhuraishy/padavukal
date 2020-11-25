@@ -1,7 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:padavukal/core/errors/error.dart';
-import 'package:padavukal/features/course/domain/entity/course.dart';
-import 'package:padavukal/features/course/domain/entity/sucess_message.dart';
+
+import '../../../../core/errors/error.dart';
+import '../entity/course.dart';
+import '../entity/sucess_message.dart';
 
 abstract class CourseRepo {
   Future<Either<Errors, List<Course>>> getAllCourses();

@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:padavukal/features/course/presentation/videos/screens/video_page.dart';
 import 'package:padavukal/styles/styles.dart';
 
 import '../../../../../core/constants/api_contsants.dart';
@@ -21,7 +22,12 @@ class ChapterList extends StatelessWidget {
       itemBuilder: (context, index) {
         final chap = chapters[index];
         return GestureDetector(
-          onTap: () => print(chap.thumbnail),
+          onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => VideoPage(chapter: chap),
+            ),
+          ),
           child: Container(
             padding: EdgeInsets.all(16),
             child: Column(

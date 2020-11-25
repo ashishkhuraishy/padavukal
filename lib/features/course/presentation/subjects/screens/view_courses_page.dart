@@ -18,7 +18,9 @@ class ViewCoursesPage extends StatelessWidget {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text("You dont have any default courses selected"),
+          Center(
+            child: Text("You dont have any default courses selected"),
+          ),
           RaisedButton.icon(
             onPressed: () => Navigator.push(
               context,
