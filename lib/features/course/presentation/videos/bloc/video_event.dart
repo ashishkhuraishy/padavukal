@@ -6,3 +6,5 @@ abstract class VideoEvent extends Equatable {
   @override
   List<Object> get props => [];
 }
+
+class VideoPageStartEvent extends VideoEvent {}

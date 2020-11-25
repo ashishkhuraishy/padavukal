@@ -33,9 +33,6 @@ class _HomeTabState extends State<HomeTab> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Padavukal'),
-      ),
       body: PageView(
         controller: _pageController,
         onPageChanged: (value) => setState(() => indx = value),
@@ -54,6 +51,8 @@ class _HomeTabState extends State<HomeTab> {
           );
           setState(() => indx = value);
         },
+        selectedItemColor: Colors.white,
+        unselectedItemColor: Colors.white54,
         currentIndex: indx,
         items: [
           BottomNavigationBarItem(

@@ -1,11 +1,11 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
-import 'package:padavukal/wrapper.dart';
 
+import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/course/presentation/subjects/bloc/subject_bloc.dart';
 import 'injection_container.dart' as container;
+import 'wrapper.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +20,9 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (_) => AuthBloc(authRepo: container.sl()),
+          create: (_) => AuthBloc(
+            authRepo: container.sl(),
+          ),
         ),
         BlocProvider<SubjectBloc>(
           create: (context) => SubjectBloc(subjectRepo: container.sl()),

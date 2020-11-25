@@ -47,6 +47,10 @@ dependencies:
   get_it: ^4.0.4
   data_connection_checker: ^0.3.4
   http:
+  #icons
+  material_design_icons_flutter: ^4.0.5
+  #image caching
+  cached_network_image: ^2.3.3
 
 
 dev_dependencies:

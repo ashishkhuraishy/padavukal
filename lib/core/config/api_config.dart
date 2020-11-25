@@ -23,8 +23,10 @@ class ApiConfig {
 
   Future<String> get _token async => auth.currentUser.getIdToken();
 
-  Future<Either<Errors, T>> get<T extends JsonModel<T>>(
-      {T instance, String endpoint}) async {
+  Future<Either<Errors, T>> get<T extends JsonModel<T>>({
+    T instance,
+    String endpoint,
+  }) async {
     Response response;
 
     try {
@@ -33,7 +35,7 @@ class ApiConfig {
         HttpHeaders.authorizationHeader: token,
       });
 
-      logger.i(response);
+      logger.i(response.body);
 
       Map data = jsonDecode(response.body);
       var res = _convertedData<T>(data, instance);
@@ -44,8 +46,10 @@ class ApiConfig {
     }
   }
 
-  Future<Either<Errors, List<T>>> getList<T extends JsonModel<T>>(
-      {T instance, String endpoint}) async {
+  Future<Either<Errors, List<T>>> getList<T extends JsonModel<T>>({
+    T instance,
+    String endpoint,
+  }) async {
     Response response;
     try {
       String token = await _token;
@@ -56,7 +60,7 @@ class ApiConfig {
           HttpHeaders.authorizationHeader: token,
         },
       );
-      logger.i(response);
+      logger.i(response.body);
       List data = jsonDecode(response.body);
       return Right(data.map<T>((e) => _convertedData(e, instance)).toList());
     } catch (e) {
