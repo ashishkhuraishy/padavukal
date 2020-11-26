@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:padavukal/features/quiz/presentation/screens/quiz_page.dart';
 
 import '../../../../domain/entity/subject.dart';
 import '../view_courses_page.dart';
@@ -38,7 +39,7 @@ class _HomeTabState extends State<HomeTab> {
         onPageChanged: (value) => setState(() => indx = value),
         children: [
           HomePage(subjects: widget.subjects),
-          ViewCoursesPage(),
+          QuizPage(subjects: widget.subjects),
           AccountPage(),
         ],
       ),

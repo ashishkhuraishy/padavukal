@@ -35,11 +35,16 @@ class CourseBloc extends Bloc<CourseEvent, CourseState> {
         (courses) => CourseLoaded(courses: courses),
       );
     } else if (event is SelectCourseEvent) {
+      yield LoadingState();
       if (event.course.isSubscribed) {
-        // TODO: implement course renew logic
+        final res = await courseRepo.setAsDefaultCourse(event.course.id);
+        yield res.fold(
+          (err) => CourseErrorState(err: err),
+          (sucess) => SucessState(sucessMessage: sucess),
+        );
+        //TODO: check for premium
 
       } else {
-        yield LoadingState();
         final res = await courseRepo.subscribeCourse(event.course.id);
         yield res.fold(
           (err) => CourseErrorState(err: err),
