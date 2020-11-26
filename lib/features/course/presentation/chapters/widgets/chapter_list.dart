@@ -53,8 +53,12 @@ class ChapterList extends StatelessWidget {
                                 value: progress.progress,
                               ),
                             ),
-                            errorWidget: (context, url, error) =>
-                                Icon(Icons.error),
+                            errorWidget: (context, url, error) => Expanded(
+                              child: Container(
+                                child: Icon(Icons.error),
+                                height: 250,
+                              ),
+                            ),
                           )
                         : Image.asset(
                             'assets/images/sets2.png',

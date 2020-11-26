@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/course/presentation/courses/bloc/course_bloc.dart';
-import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
-import 'package:padavukal/widgets/error_widget.dart';
-import 'package:padavukal/widgets/loading.dart';
 
 import '../../../../../injection_container.dart';
+import '../../../../../widgets/error_widget.dart';
+import '../../../../../widgets/loading.dart';
+import '../../subjects/bloc/subject_bloc.dart';
+import '../bloc/course_bloc.dart';
 
 class ViewAllCourses extends StatelessWidget {
   final SubjectBloc subjectBloc;
@@ -44,9 +44,9 @@ class ViewAllCourses extends StatelessWidget {
                     return ListTile(
                       title: Text(course.name),
                       trailing: Text(course.price.toString()),
-                      onTap: () => context
-                          .bloc<CourseBloc>()
-                          .add(SelectCourseEvent(course: course)),
+                      onTap: () => context.bloc<CourseBloc>().add(
+                            SelectCourseEvent(course: course),
+                          ),
                     );
                   },
                 );

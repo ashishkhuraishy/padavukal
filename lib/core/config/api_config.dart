@@ -21,7 +21,7 @@ class ApiConfig {
     @required this.logger,
   });
 
-  Future<String> get _token async => auth.currentUser.getIdToken();
+  User get _user => auth.currentUser;
 
   Future<Either<Errors, T>> get<T extends JsonModel<T>>({
     T instance,
@@ -30,7 +30,12 @@ class ApiConfig {
     Response response;
 
     try {
-      String token = await _token;
+      String token = await _user.getIdToken();
+      print(
+          "#################################################################");
+      log(_user.uid);
+      print(
+          "#################################################################");
       response = await client.get(endpoint, headers: {
         HttpHeaders.authorizationHeader: token,
       });
@@ -52,15 +57,19 @@ class ApiConfig {
   }) async {
     Response response;
     try {
-      String token = await _token;
-      log(token);
+      String token = await _user.getIdToken();
+      print(
+          "#################################################################");
+      log(_user.uid);
+      print(
+          "#################################################################");
       response = await client.get(
         endpoint,
         headers: {
           HttpHeaders.authorizationHeader: token,
         },
       );
-      logger.i(response.body);
+      // logger.i(response.body);
       List data = jsonDecode(response.body);
       return Right(data.map<T>((e) => _convertedData(e, instance)).toList());
     } catch (e) {
@@ -79,7 +88,12 @@ class ApiConfig {
     Response response;
     logger.i(jsonEncode(data));
     try {
-      String token = await _token;
+      String token = await _user.getIdToken();
+      print(
+          "#################################################################");
+      log(token);
+      print(
+          "#################################################################");
       response = await client.post(
         endpoint,
         body: jsonEncode(data),
@@ -88,6 +102,7 @@ class ApiConfig {
           HttpHeaders.authorizationHeader: token,
         },
       );
+      logger.i(response.body);
       if (response.statusCode > 299)
         throw Exception(["Error occured with status ${response.statusCode}"]);
       var res = _convertedData<T>(jsonDecode(response.body), instance);

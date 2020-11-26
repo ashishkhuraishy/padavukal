@@ -79,7 +79,10 @@ class _VideoItemsState extends State<VideoItems> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  VideoPlayer(currentVideo: currentVideo),
+                  VideoPlayer(
+                    currentVideo: currentVideo,
+                    key: UniqueKey(),
+                  ),
                   Description(
                     videoDetials: currentVideo,
                   ),
@@ -115,6 +118,7 @@ class VideoPlayer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(currentVideo?.videoUrl);
     if (currentVideo == null || currentVideo.videoUrl.contains('http')) {
       return Container(
         height: 200,
@@ -141,6 +145,7 @@ class VideoPlayer extends StatelessWidget {
           id: currentVideo.videoUrl,
           looping: false,
           autoPlay: true,
+          key: UniqueKey(),
         ),
       ],
     );

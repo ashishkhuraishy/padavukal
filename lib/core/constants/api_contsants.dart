@@ -1,5 +1,5 @@
 const String BASE_URL = "http://52.66.141.181";
-// const String BASE_URL = "https://83a59b397f60.ngrok.io";
+// const String BASE_URL = "http://df007af9437c.ngrok.io";
 
 class ApiEndpoints {
   static String courses = BASE_URL + "/api/profile/courses";

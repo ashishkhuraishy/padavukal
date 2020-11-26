@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/course/presentation/subjects/bloc/subject_bloc.dart';
+import 'features/quiz/presentation/bloc/quiz_bloc.dart';
 import 'injection_container.dart' as container;
 import 'wrapper.dart';
 
@@ -20,12 +21,19 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthBloc>(
-          create: (_) => AuthBloc(
+          create: (context) => AuthBloc(
             authRepo: container.sl(),
           ),
         ),
         BlocProvider<SubjectBloc>(
-          create: (context) => SubjectBloc(subjectRepo: container.sl()),
+          create: (context) => SubjectBloc(
+            subjectRepo: container.sl(),
+          ),
+        ),
+        BlocProvider<QuizBloc>(
+          create: (context) => QuizBloc(
+            subjectRepo: container.sl(),
+          ),
         ),
       ],
       child: MaterialApp(
