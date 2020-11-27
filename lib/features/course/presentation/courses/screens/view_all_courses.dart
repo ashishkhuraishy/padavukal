@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -29,9 +31,12 @@ class ViewAllCourses extends StatelessWidget {
         child: BlocListener<CourseBloc, CourseState>(
           listener: (context, state) {
             if (state is SucessState) {
-              Scaffold.of(context).showSnackBar(
-                SnackBar(content: Text("sucess")),
-              );
+              // Scaffold.of(context).showSnackBar(
+              // SnackBar(content: Text("sucess")),
+              // );
+              subjectBloc.add(HomePageEvent());
+              Navigator.pop(context);
+              log('Sucess');
             }
           },
           child: BlocBuilder<CourseBloc, CourseState>(
@@ -56,8 +61,6 @@ class ViewAllCourses extends StatelessWidget {
                   retryFn: () => context.bloc<CourseBloc>().add(InitialEvent()),
                 );
               } else if (state is SucessState) {
-                subjectBloc.add(HomePageEvent());
-                Navigator.pop(context);
                 return Container();
               }
               return Loading();

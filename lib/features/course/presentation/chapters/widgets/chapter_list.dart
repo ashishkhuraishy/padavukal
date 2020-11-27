@@ -49,8 +49,13 @@ class ChapterList extends StatelessWidget {
                             imageUrl: '$BASE_URL${chap.thumbnail}',
                             progressIndicatorBuilder:
                                 (context, url, progress) => Center(
-                              child: CircularProgressIndicator(
-                                value: progress.progress,
+                              child: Container(
+                                height: 180,
+                                child: Center(
+                                  child: CircularProgressIndicator(
+                                    value: progress.progress,
+                                  ),
+                                ),
                               ),
                             ),
                             errorWidget: (context, url, error) => Expanded(
