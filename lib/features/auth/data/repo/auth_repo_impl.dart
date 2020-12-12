@@ -1,7 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:logger/logger.dart';
-import 'package:padavukal/features/auth/domain/repositories/auth_repo.dart';
+
+import '../../domain/repositories/auth_repo.dart';
 
 class AuthRepoImpl extends AuthRepo {
   final FirebaseAuth firebaseAuth;

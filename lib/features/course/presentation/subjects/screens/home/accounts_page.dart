@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:padavukal/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:padavukal/features/course/presentation/courses/screens/view_all_courses.dart';
-import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
+
+import '../../../../../auth/presentation/bloc/auth_bloc.dart';
+import '../../../courses/screens/view_all_courses.dart';
+import '../../bloc/subject_bloc.dart';
 
 class AccountPage extends StatelessWidget {
   static const routeName = "profile";

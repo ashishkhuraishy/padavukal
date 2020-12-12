@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/features/course/domain/entity/subject.dart';
+
+import '../../../course/domain/entity/subject.dart';
 
 class QuizPage extends StatefulWidget {
   final List<Subject> subjects;

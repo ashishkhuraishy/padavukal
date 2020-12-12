@@ -1,11 +1,12 @@
 import 'package:dartz/dartz.dart';
-import 'package:padavukal/core/config/api_config.dart';
-import 'package:padavukal/core/constants/api_contsants.dart';
-import 'package:padavukal/core/errors/error.dart';
-import 'package:padavukal/features/course/data/models/course_model.dart';
-import 'package:padavukal/features/course/data/models/sucess_message_model.dart';
-import 'package:padavukal/features/course/domain/entity/course.dart';
-import 'package:padavukal/features/course/domain/entity/sucess_message.dart';
+
+import '../../../../core/config/api_config.dart';
+import '../../../../core/constants/api_contsants.dart';
+import '../../../../core/errors/error.dart';
+import '../../domain/entity/course.dart';
+import '../../domain/entity/sucess_message.dart';
+import '../models/course_model.dart';
+import '../models/sucess_message_model.dart';
 
 abstract class CoursesRemote {
   Future<Either<Errors, List<Course>>> getAllCourse();

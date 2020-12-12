@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/course/presentation/courses/screens/view_all_courses.dart';
-import 'package:padavukal/features/course/presentation/subjects/bloc/subject_bloc.dart';
+
+import '../../courses/screens/view_all_courses.dart';
+import '../bloc/subject_bloc.dart';
 
 class ViewCoursesPage extends StatelessWidget {
   const ViewCoursesPage({

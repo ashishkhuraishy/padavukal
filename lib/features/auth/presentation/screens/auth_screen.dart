@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/widgets/outline_button.dart';
+
+import '../../../../widgets/outline_button.dart';
 
 class AuthScreen extends StatelessWidget {
   @override

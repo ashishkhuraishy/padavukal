@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/features/quiz/presentation/screens/quiz_page.dart';
 
+import '../../../../../quiz/presentation/screens/quiz_page.dart';
 import '../../../../domain/entity/subject.dart';
-import '../view_courses_page.dart';
 import 'accounts_page.dart';
 import 'home_page.dart';
 

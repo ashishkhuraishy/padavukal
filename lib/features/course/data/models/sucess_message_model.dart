@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:padavukal/core/config/json_config.dart';
-import 'package:padavukal/features/course/domain/entity/sucess_message.dart';
+
+import '../../../../core/config/json_config.dart';
+import '../../domain/entity/sucess_message.dart';
 
 part 'sucess_message_model.g.dart';
 

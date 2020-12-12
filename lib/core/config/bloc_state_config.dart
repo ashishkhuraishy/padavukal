@@ -1,5 +1,6 @@
 import 'package:equatable/equatable.dart';
-import 'package:padavukal/core/errors/error.dart';
+
+import '../errors/error.dart';
 
 abstract class BlocState extends Equatable {
   @override

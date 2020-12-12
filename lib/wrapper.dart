@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
 
 import 'features/auth/presentation/bloc/auth_bloc.dart';
-import 'features/course/presentation/subjects/screens/home_wrapper.dart';
 import 'features/auth/presentation/screens/auth_screen.dart';
+import 'features/course/presentation/subjects/screens/home_wrapper.dart';
 import 'widgets/loading.dart';
 
 class Wrapper extends StatelessWidget {

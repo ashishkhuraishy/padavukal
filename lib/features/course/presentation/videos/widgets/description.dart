@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
-import 'package:padavukal/core/constants/api_contsants.dart';
-import 'package:padavukal/core/services/pdf_services.dart';
-import 'package:padavukal/features/course/domain/entity/video_data.dart';
-import 'package:padavukal/styles/styles.dart';
+
+import '../../../../../core/constants/api_contsants.dart';
+import '../../../../../core/services/pdf_services.dart';
+import '../../../../../styles/styles.dart';
+import '../../../domain/entity/video_data.dart';
 
 class Description extends StatelessWidget {
   final VideoData videoDetials;

@@ -2,11 +2,12 @@ import 'dart:async';
 
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:padavukal/core/constants/api_contsants.dart';
-import 'package:padavukal/core/errors/error.dart';
-import 'package:padavukal/features/course/domain/entity/chapter.dart';
-import 'package:padavukal/features/course/domain/entity/subject.dart';
-import 'package:padavukal/features/course/domain/repositories/subject_repo.dart';
+
+import '../../../../../core/constants/api_contsants.dart';
+import '../../../../../core/errors/error.dart';
+import '../../../domain/entity/chapter.dart';
+import '../../../domain/entity/subject.dart';
+import '../../../domain/repositories/subject_repo.dart';
 
 part 'subject_event.dart';
 part 'subject_state.dart';

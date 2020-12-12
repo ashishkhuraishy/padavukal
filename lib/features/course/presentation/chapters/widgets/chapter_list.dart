@@ -1,10 +1,10 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:padavukal/features/course/presentation/videos/screens/video_page.dart';
-import 'package:padavukal/styles/styles.dart';
 
 import '../../../../../core/constants/api_contsants.dart';
+import '../../../../../styles/styles.dart';
 import '../../../domain/entity/chapter.dart';
+import '../../videos/screens/video_page.dart';
 
 class ChapterList extends StatelessWidget {
   final List<Chapter> chapters;

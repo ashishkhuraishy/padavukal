@@ -1,6 +1,7 @@
 import 'package:json_annotation/json_annotation.dart';
-import 'package:padavukal/core/config/json_config.dart';
-import 'package:padavukal/features/course/domain/entity/course.dart';
+
+import '../../../../core/config/json_config.dart';
+import '../../domain/entity/course.dart';
 
 part 'course_model.g.dart';
 

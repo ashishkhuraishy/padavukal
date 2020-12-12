@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/features/course/domain/entity/subject.dart';
+import '../features/course/domain/entity/subject.dart';
 
 class SubjectListWidg extends StatelessWidget {
   final List<Subject> subjects;

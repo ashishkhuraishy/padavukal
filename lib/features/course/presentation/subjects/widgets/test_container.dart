@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/styles/styles.dart';
+
+import '../../../../../styles/styles.dart';
 
 class TestContainer extends StatelessWidget {
   @override

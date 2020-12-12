@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:padavukal/core/errors/error.dart';
+
+import '../core/errors/error.dart';
 
 class ErrorsWidget extends StatelessWidget {
   final Errors errors;

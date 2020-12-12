@@ -1,8 +1,9 @@
 import 'package:dartz/dartz.dart';
-import 'package:padavukal/core/config/use_case_config.dart';
-import 'package:padavukal/core/errors/error.dart';
-import 'package:padavukal/features/course/domain/entity/course.dart';
-import 'package:padavukal/features/course/domain/repositories/course_repo.dart';
+
+import '../../../../core/config/use_case_config.dart';
+import '../../../../core/errors/error.dart';
+import '../entity/course.dart';
+import '../repositories/course_repo.dart';
 
 class GetCourseById extends UseCase<Course, IdParams> {
   final CourseRepo courseRepo;

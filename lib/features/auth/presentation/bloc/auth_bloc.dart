@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:logger/logger.dart';
-import 'package:padavukal/features/auth/domain/repositories/auth_repo.dart';
+
+import '../../domain/repositories/auth_repo.dart';
 
 part 'auth_event.dart';
 part 'auth_state.dart';

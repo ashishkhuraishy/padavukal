@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:padavukal/features/course/presentation/videos/widgets/description.dart';
 import 'package:vimeoplayer/vimeoplayer.dart';
 
 import '../../../../../injection_container.dart';
@@ -8,6 +7,7 @@ import '../../../../../widgets/error_widget.dart';
 import '../../../domain/entity/chapter.dart';
 import '../../../domain/entity/video_data.dart';
 import '../bloc/video_bloc.dart';
+import '../widgets/description.dart';
 
 class VideoPage extends StatelessWidget {
   final Chapter chapter;
