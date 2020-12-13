@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'features/auth/presentation/bloc/auth_bloc.dart';
 import 'features/course/presentation/subjects/bloc/subject_bloc.dart';
-import 'features/quiz/presentation/bloc/quiz_bloc.dart';
+// import 'features/quiz/presentation/bloc/quiz_bloc.dart';
 import 'injection_container.dart' as container;
 import 'wrapper.dart';
 
-void main() async {
+main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
   await container.init();
@@ -30,11 +30,11 @@ class MyApp extends StatelessWidget {
             subjectRepo: container.sl(),
           ),
         ),
-        BlocProvider<QuizBloc>(
-          create: (context) => QuizBloc(
-            subjectRepo: container.sl(),
-          ),
-        ),
+        // BlocProvider<QuizBloc>(
+        //   create: (context) => QuizBloc(
+        //     subjectRepo: container.sl(),
+        //   ),
+        // ),
       ],
       child: MaterialApp(
         title: 'Padavukal',
